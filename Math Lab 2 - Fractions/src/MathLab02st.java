@@ -1,4 +1,4 @@
-// MathLab02st.java
+ // MathLab02st.java
 // The Rational Class Program I
 // This is the student, starting version of the MathLab02 assignment.
 
@@ -16,8 +16,9 @@ public class MathLab02st
 		int num = Integer.parseInt(strNbr1);
 		int den = Integer.parseInt(strNbr2);
 
-		Rational r = new Rational(num,den);
-		JOptionPane.showMessageDialog(null,r.getNum()+"/"+r.getDen()+" equals "+r.getDecimal());
+		Rational1 r = new Rational1(num,den);
+		JOptionPane.showMessageDialog(null,r.getDecimal1()+ " equals "+  r.getOriginal() +
+				"\n" +" and reduces to " + r.getRational());
           
 		System.exit(0);
 	}
@@ -25,27 +26,49 @@ public class MathLab02st
 
 				
 
-class Rational
+class Rational1
 {
+	private int num, den;
 		
 //	Rational
+	public Rational1 (int n, int d){
+		num = n;
+		den = d;
+	}
 	
 //	getNum
 	
+	public int getNum1(int n){
+		return num;
+	}
 //	getDen
+	
+	public int getDen1(int d){
+		return den;
+	}
 
 //	getDecimal
-
+	public String getDecimal1(){
+		return num+ "/"+  den ;
+	}
 //	getRational 
+	public String getRational(){
+		int gfc= getGCF(num, den);
+		return   (num/gfc)+ "/"+ (den/gfc);
+	}
 	
 //	getOriginal
-
+	public double  getOriginal(){
+		return (double) num/den;
+	}
 //	reduce
+
+	
 
 	private int getGCF(int n1,int n2)
 	{
-		int rem = 0;
-		int gcf = 0;
+		int rem = num;
+		int gcf = den;
 		do
 		{
 			rem = n1 % n2;
